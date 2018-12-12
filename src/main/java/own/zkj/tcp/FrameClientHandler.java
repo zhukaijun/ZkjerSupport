@@ -17,7 +17,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import own.zkj.tcp.data.DataDecoder;
 import own.zkj.tcp.data.DataEncoder;
 import own.zkj.tcp.listeners.IncomingMessageListener;
-import own.zkj.util.DateUtil;
+import own.zkj.util.ZDateUtil;
 
 public class FrameClientHandler implements ChannelFutureListener {
 	private static Logger logger = LoggerFactory.getLogger(FrameClientHandler.class);
@@ -52,7 +52,7 @@ public class FrameClientHandler implements ChannelFutureListener {
 			f = b.connect(host[hostIndex], port).sync().addListener(new FrameClientHandler());
 			f.channel().closeFuture().sync();
 		} catch (Exception e) {
-			String t = DateUtil.parseToString(new Date(System.currentTimeMillis() + delay), DateUtil.yyyyMMddHHmmssSSS);
+			String t = ZDateUtil.parseToString(new Date(System.currentTimeMillis() + delay), ZDateUtil.yyyyMMddHHmmssSSS);
 			logger.warn("连接服务器(" + host[hostIndex] + ":" + port + ")失败,准备在" + t + "再次尝试连接");
 			if (repeatTimes < 1) {
 				logger.error("连接服务器(" + host[hostIndex] + ":" + port + ")已超过最大次数，放弃连接");

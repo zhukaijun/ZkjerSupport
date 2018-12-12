@@ -11,7 +11,7 @@ import java.util.GregorianCalendar;
  * 日期格式化
  * 
  */
-public final class DateUtil {
+public final class ZDateUtil {
 	/**
 	 * yy-MM-dd
 	 */
@@ -103,7 +103,7 @@ public final class DateUtil {
 		java.sql.Date date = null;
 		if (s == null || s.length() < 8)
 			return null;
-		Date dd = DateUtil.parseToDate(s, style);
+		Date dd = ZDateUtil.parseToDate(s, style);
 		date = new java.sql.Date(dd.getTime());
 		return date;
 	}
@@ -201,8 +201,8 @@ public final class DateUtil {
 			String style) {
 		if (timestamp == null)
 			return null;
-		return DateUtil.parseToString(timestamp.toString(),
-				DateUtil.yyyyMMddHHmmssSSS);
+		return ZDateUtil.parseToString(timestamp.toString(),
+				ZDateUtil.yyyyMMddHHmmssSSS);
 	}
 
 	public static Timestamp parseToTimestamp(String s, String style) {
@@ -220,7 +220,7 @@ public final class DateUtil {
 	 * @return
 	 */
 	public static String getCurrentTime(String style) {
-		return DateUtil.parseToString(new Date(),style);
+		return ZDateUtil.parseToString(new Date(),style);
 	}
 	
 	
@@ -230,7 +230,7 @@ public final class DateUtil {
 	 */
 	public static String getTimestampDate() {
 		Timestamp ts = new Timestamp(new Date().getTime());
-		return DateUtil.parseToString(ts.toString(), DateUtil.yyyyMMddHHmmssSSS);
+		return ZDateUtil.parseToString(ts.toString(), ZDateUtil.yyyyMMddHHmmssSSS);
 	}
 
 	public static Timestamp getLocalTimestamp() {
